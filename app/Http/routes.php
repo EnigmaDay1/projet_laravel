@@ -15,10 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Ajout des ressources Project et Task
-Route::resource('projects', 'ProjectsController');
-
-Route::resource('projects.tasks', 'TasksController'); //permet pour les tâches d'avoir un URL comme : /projects/1/tasks/3 (plutôt que /tasks/3)
+// Fournis aux méthodes du controller un objet plutôt qu'un ID
+Route::model('tasks', 'Task');
+Route::model('projects', 'Project');
 
 // Permet d'avoir des URL comme /projects/ma-premiere-liste/tasks/acheter-lait plutôt que /projects/1/tasks/2
 Route::bind('tasks', function($value, $route) {
@@ -27,3 +26,8 @@ Route::bind('tasks', function($value, $route) {
 Route::bind('projects', function($value, $route) {
     return App\Project::whereSlug($value)->first();
 });
+
+//Ajout des ressources Project et Task
+Route::resource('projects', 'ProjectsController');
+Route::resource('projects.tasks', 'TasksController'); //permet pour les tâches d'avoir un URL comme : /projects/1/tasks/3 (plutôt que /tasks/3)
+

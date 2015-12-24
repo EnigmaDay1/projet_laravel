@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Task;
 
 class TasksController extends Controller
 {
@@ -16,7 +17,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
+        return view('tasks.index', compact('project'));
     }
 
     /**
@@ -26,7 +27,7 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasks.create', compact('project'));
     }
 
     /**
@@ -46,9 +47,9 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('project', 'task'));
     }
 
     /**
@@ -57,9 +58,9 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', compact('project', 'task'));
     }
 
     /**
@@ -69,7 +70,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -80,7 +81,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Task $task)
     {
         //
     }
