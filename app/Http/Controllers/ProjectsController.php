@@ -12,6 +12,11 @@ use Redirect;
 
 class ProjectsController extends Controller
 {
+    protected $rules = [
+        'name' => ['required', 'min:3'],
+        'slug' => ['required'],
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -39,8 +44,10 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $this->validate($request, $this->rules); //vérifie les règles avant de créer la liste
+
         $input = Input::all();
         Project::create( $input );
 
@@ -76,8 +83,10 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Project $project)
+    public function update(Project $project, Request $request)
     {
+        $this->validate($request, $this->rules); //vérifie les règles avant de modifier la liste
+
         $input = array_except(Input::all(), '_method');
         $project->update($input);
 

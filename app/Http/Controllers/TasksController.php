@@ -13,6 +13,12 @@ use Redirect;
 
 class TasksController extends Controller
 {
+    protected $rules = [
+        'name' => ['required', 'min:3'],
+        'slug' => ['required'],
+        'description' => ['required'],
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +34,7 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Project $project)
     {
         return view('tasks.create', compact('project'));
     }
@@ -39,8 +45,10 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Project $project)
+    public function store(Project $project, Request $request)
     {
+        $this->validate($request, $this->rules); //vérifie les règles avant de créer la tâche
+
         $input = Input::all();
         $input['project_id'] = $project->id;
         Task::create( $input );
@@ -54,7 +62,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show(Project $project, Task $task)
     {
         return view('tasks.show', compact('project', 'task'));
     }
@@ -65,7 +73,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit(Project $project, Task $task)
     {
         return view('tasks.edit', compact('project', 'task'));
     }
@@ -77,8 +85,10 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Project $project, Task $task)
+    public function update(Project $project, Task $task, Request $request)
     {
+        $this->validate($request, $this->rules); //vérifie les règles avant de modifier la tâche
+
         $input = array_except(Input::all(), '_method');
         $task->update($input);
 
