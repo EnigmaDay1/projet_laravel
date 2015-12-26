@@ -16,6 +16,16 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    // Propriétés Eloquent
+
+    /**
+     * Récupère toutes les listes pour le user
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
     /**
      * The database table used by the model.
      *

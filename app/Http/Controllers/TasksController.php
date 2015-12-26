@@ -19,6 +19,11 @@ class TasksController extends Controller
         'description' => ['required'],
     ];
 
+    public function __construct()
+    {
+        $this->middleware('auth'); //l'utilisateur doit être connecté pour effectuer une action sur le contrôlleur Taches
+    }
+
     /**
      * Display a listing of the resource.
      *

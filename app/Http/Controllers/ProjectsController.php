@@ -17,6 +17,11 @@ class ProjectsController extends Controller
         'slug' => ['required'],
     ];
 
+    public function __construct()
+    {
+        $this->middleware('auth'); //l'utilisateur doit être connecté pour effectuer une action sur le contrôlleur Listes
+    }
+
     /**
      * Display a listing of the resource.
      *

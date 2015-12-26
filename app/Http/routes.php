@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
 // Fournis aux méthodes du controller un objet plutôt qu'un ID
@@ -30,4 +30,13 @@ Route::bind('projects', function($value, $route) {
 //Ajout des ressources Project et Task
 Route::resource('projects', 'ProjectsController');
 Route::resource('projects.tasks', 'TasksController'); //permet pour les tâches d'avoir un URL comme : /projects/1/tasks/3 (plutôt que /tasks/3)
+
+// Routes pour la connexion
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Routes pour l'inscription
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
