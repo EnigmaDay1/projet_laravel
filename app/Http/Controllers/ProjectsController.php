@@ -27,9 +27,9 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        $projects = Project::where('user_id', $request->user()->id)->get(); // pour que l'utilisateur ne voit que ses propres listes
         return view('projects.index', compact('projects'));
     }
 
