@@ -6,5 +6,4 @@
         {{ $task->name }}
     </h2>
 
-    {{ $task->description }}
 @endsection

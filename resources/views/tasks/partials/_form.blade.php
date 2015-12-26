@@ -14,5 +14,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('date', 'Date:') !!}
+    <input type="text" id="datepicker" name="date" value="<?php echo date('d/m/Y'); ?>" />
+</div>
+
+<div class="form-group">
     {!! Form::submit($submit_text) !!}
 </div>
+

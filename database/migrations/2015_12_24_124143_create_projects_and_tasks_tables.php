@@ -29,7 +29,7 @@ class CreateProjectsAndTasksTables extends Migration
             $table->string('name')->default('');
             $table->string('slug')->default('');
             $table->boolean('completed')->default(false);
-
+            $table->text('date')->default('');
             $table->timestamps();
         });
     }

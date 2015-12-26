@@ -55,6 +55,7 @@ class TasksController extends Controller
 
         $input = Input::all();
         $input['project_id'] = $project->id;
+
         Task::create( $input );
 
         return Redirect::route('projects.show', $project->slug)->with('message', 'Task created.');
