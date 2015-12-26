@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('app');
+    return view('welcome');
 });
 
 // Fournis aux méthodes du controller un objet plutôt qu'un ID

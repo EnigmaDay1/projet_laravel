@@ -8,7 +8,7 @@ class Project extends Model
 {
     protected $guarded = []; //empêche l'erreur MassAssignmentException
 
-    protected $fillable = ['id', 'user_id','name', 'slug']; // l'attribut name doit être "mass-assignable" IMPORTANT sinon bug lors de la création de liste
+    protected $fillable = ['id', 'user_id','name', 'slug', 'description']; // l'attribut name doit être "mass-assignable" IMPORTANT sinon bug lors de la création de liste
 
     public function tasks()
     {

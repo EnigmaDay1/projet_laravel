@@ -7,7 +7,7 @@ class CreateProjectsAndTasksTables extends Migration
 {
     /**
      * Run the migrations.
-     * >>> Crée les 2 tables (et leurs colones) en 1 seule migration
+     * >>> Crï¿½e les 2 tables (et leurs colones) en 1 seule migration
      *
      * @return void
      */
@@ -18,6 +18,7 @@ class CreateProjectsAndTasksTables extends Migration
             $table->integer('user_id')->index(); //lien entre la table projects et users
             $table->string('name')->default('');
             $table->string('slug')->default(''); //url
+            $table->text('description')->default('');
             $table->timestamps();
         });
 
@@ -28,7 +29,7 @@ class CreateProjectsAndTasksTables extends Migration
             $table->string('name')->default('');
             $table->string('slug')->default('');
             $table->boolean('completed')->default(false);
-            $table->text('description')->default('');
+
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class ProjectsController extends Controller
     protected $rules = [
         'name' => ['required', 'min:3'],
         'slug' => ['required'],
+        'description' => ['required'],
     ];
 
     public function __construct()
