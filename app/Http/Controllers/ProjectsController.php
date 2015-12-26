@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -49,12 +50,16 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project, User $user)
     {
         $this->validate($request, $this->rules); //vérifie les règles avant de créer la liste
 
         $input = Input::all();
+    //  $input['user_id'] = '1';
+        $input['user_id'] =  $request->user()->id;
+
         Project::create( $input );
+
 
         return Redirect::route('projects.index')->with('message', 'Project created');
     }
