@@ -22,8 +22,6 @@
                         <input type="checkbox" disabled="disabled" />
                         @endif
 
-
-
                     {!! Form::close() !!}
                 </li>
             @endforeach
