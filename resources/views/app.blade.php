@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
     <style>
         .content {margin:auto 30px}
         label{display:block}
-
+        li {padding: 2px}
         #ui-datepicker-div{ font-size: 80%; }
     </style>
 
@@ -39,24 +39,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ToDo List</a>
+            <a class="navbar-brand" href="#"><i class="fa fa-list"></i> ToDo List</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/projects">Accueil</a></li>
-                <li><a href="/apropos">À propos</a></li>
+                <li><a href="/projects"><i class="fa fa-home"></i> Accueil</a></li>
+                <li><a href="/apropos"><i class="fa fa-comment"></i> À propos</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li><a href="/auth/login">Connexion</a></li>
-                    <li><a href="/auth/register">Inscription</a></li>
+                    <li><a href="/auth/login"><i class="fa fa-btn fa-sign-in"></i> Connexion</a></li>
+                    <li><a href="/auth/register"><i class="fa fa-btn fa-heart"></i> Inscription</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-btn fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/auth/logout">Déconnexion</a></li>
+                            <li><a href="/auth/logout"><i class="fa fa-btn fa-sign-out"></i> Déconnexion</a></li>
                         </ul>
                     </li>
                 @endif
@@ -65,19 +65,22 @@
     </div>
 </nav>
 
+
 <div class="content">
+    <div class="col-md-8 col-md-offset-2">
     @if (Session::has('message'))
-        <div class="flash alert-info">
+        <div class="alert alert-success">
             <p>{{ Session::get('message') }}</p>
         </div>
     @endif
         @if ($errors->any())
-            <div class='flash alert-danger'>
+            <div class='alert alert-warning'>
                 @foreach ( $errors->all() as $error )
                     <p>{{ $error }}</p>
                 @endforeach
             </div>
         @endif
+        </div>
 
     @yield('content')
 </div>
@@ -88,10 +91,10 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/jquery.ui.datepicker-fr.js"></script>
+<script type="text/javascript" src="http://jqueryui.com/resources/demos/datepicker/datepicker-fr.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ]);
     });
 
 </script>

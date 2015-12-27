@@ -14,7 +14,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('date', 'Date:') !!}
+    {!! Form::label('date', 'Date d\'échéance:') !!}
     <input type="text" id="datepicker" name="date" value="<?php echo date('d/m/Y'); ?>" />
 </div>
 

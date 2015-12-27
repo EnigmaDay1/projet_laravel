@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h2>Listes de tâches</h2></div>
                     <div class="panel-body">
-
+                        <br>
                         @if ( !$projects->count() )
                             Vous n'avez pas de listes de tâches
                         @else
@@ -36,8 +36,8 @@
                                         ?>
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
 
-                                            {!! link_to_route('projects.edit', 'Modifier', array($project->slug), array('class' => 'btn btn-info')) !!}
-                                            {!! Form::submit('Supprimer', array('class' => 'btn btn-danger')) !!}
+                                            {!! link_to_route('projects.edit', 'Modifier', array($project->slug), array('class' => 'btn btn-primary btn-sm')) !!}
+                                            {!! Form::submit('Supprimer', array('class' => 'btn btn-danger btn-sm')) !!}
 
                                             <a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a>  - {{ $project->description }} - {{ $date->format('d/m/Y') }} - tâches accomplies {{ '('.$tachesCompletion.'/'.$tachesNombre.')' }}
 
@@ -48,7 +48,8 @@
                         @endif
 
                         <p>
-                            {!! link_to_route('projects.create', 'Créer une liste') !!}
+                            <br>
+                            <h4>{!! link_to_route('projects.create', 'Créer une liste') !!}</h4>
                         </p>
                     </div>
                 </div>

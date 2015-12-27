@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-                                        Se connecter
+                                        <i class="fa fa-btn fa-sign-in"></i> Se connecter
                                     </button>
 
                                     <a href="/password/email">Mot de passe oublié?</a>
