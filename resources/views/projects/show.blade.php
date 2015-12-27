@@ -10,18 +10,25 @@
             @foreach( $project->tasks as $task )
                 <li>
                     {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.tasks.destroy', $project->slug, $task->slug))) !!}
-                    <a href="{{ route('projects.tasks.show', [$project->slug, $task->slug]) }}">{{ $task->name }}</a> - {{ $task->date }}
-                    (
-                    {!! link_to_route('projects.tasks.edit', 'Edit', array($project->slug, $task->slug), array('class' => 'btn btn-info')) !!},
 
+                    {!! link_to_route('projects.tasks.edit', 'Edit', array($project->slug, $task->slug), array('class' => 'btn btn-info')) !!}
                     {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                    )
+
+                    {{ $task->name }} - {{ $task->date }}
+
+                    @if($task->completed =='1')
+                        <input type="checkbox" disabled="disabled" checked />
+                        @else
+                        <input type="checkbox" disabled="disabled" />
+                        @endif
+
+
+
                     {!! Form::close() !!}
                 </li>
             @endforeach
         </ul>
     @endif
-
     <p>
         {!! link_to_route('projects.index', 'Back to Projects') !!} |
         {!! link_to_route('projects.tasks.create', 'Create Task', $project->slug) !!}
