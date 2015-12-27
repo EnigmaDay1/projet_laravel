@@ -15,7 +15,6 @@ class ProjectsController extends Controller
 {
     protected $rules = [
         'name' => ['required', 'min:3'],
-        'slug' => ['required'],
         'description' => ['required'],
     ];
 
@@ -56,9 +55,9 @@ class ProjectsController extends Controller
         $this->validate($request, $this->rules); //vérifie les règles avant de créer la liste
 
         $input = Input::all();
-    //  $input['user_id'] = '1';
         $input['user_id'] =  $request->user()->id;
 
+        $input['slug'] = str_replace(' ', '_', strtolower(Input::get('name'))); //le lien (slug) se créée tout seul par rapport au nom, sans majuscule et les espaces sont remplacés par des underscore
         Project::create( $input );
 
 
@@ -99,6 +98,7 @@ class ProjectsController extends Controller
         $this->validate($request, $this->rules); //vérifie les règles avant de modifier la liste
 
         $input = array_except(Input::all(), '_method');
+        $input['slug'] = str_replace(' ', '_', strtolower(Input::get('name')));
         $project->update($input);
 
         return Redirect::route('projects.show', $project->slug)->with('message', 'Liste mise à jour.');
