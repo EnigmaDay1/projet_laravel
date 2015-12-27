@@ -58,7 +58,7 @@ class TasksController extends Controller
 
         Task::create( $input );
 
-        return Redirect::route('projects.show', $project->slug)->with('message', 'Task created.');
+        return Redirect::route('projects.show', $project->slug)->with('message', 'Tâche créée.');
     }
 
     /**
@@ -97,7 +97,7 @@ class TasksController extends Controller
         $input = array_except(Input::all(), '_method');
         $task->update($input);
 
-        return Redirect::route('projects.tasks.show', [$project->slug, $task->slug])->with('message', 'Task updated.');
+        return Redirect::route('projects.tasks.show', [$project->slug, $task->slug])->with('message', 'Tâche mise à jour.');
     }
 
     /**
@@ -110,6 +110,6 @@ class TasksController extends Controller
     {
         $task->delete();
 
-        return Redirect::route('projects.show', $project->slug)->with('message', 'Task deleted.');
+        return Redirect::route('projects.show', $project->slug)->with('message', 'Tache supprimée.');
     }
 }

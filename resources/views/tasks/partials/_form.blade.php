@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::label('name', 'Name:') !!}
+    {!! Form::label('name', 'Nom:') !!}
     {!! Form::text('name') !!}
 </div>
 
@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('completed', 'Completed:') !!}
+    {!! Form::label('completed', 'Complété:') !!}
     {!! Form::checkbox('completed') !!}
 </div>
 

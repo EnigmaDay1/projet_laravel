@@ -62,7 +62,7 @@ class ProjectsController extends Controller
         Project::create( $input );
 
 
-        return Redirect::route('projects.index')->with('message', 'Project created');
+        return Redirect::route('projects.index')->with('message', 'Liste créée');
     }
 
     /**
@@ -101,7 +101,7 @@ class ProjectsController extends Controller
         $input = array_except(Input::all(), '_method');
         $project->update($input);
 
-        return Redirect::route('projects.show', $project->slug)->with('message', 'Project updated.');
+        return Redirect::route('projects.show', $project->slug)->with('message', 'Liste mise à jour.');
     }
 
     /**
@@ -114,6 +114,6 @@ class ProjectsController extends Controller
     {
         $project->delete();
 
-        return Redirect::route('projects.index')->with('message', 'Project deleted.');
+        return Redirect::route('projects.index')->with('message', 'Liste supprimée.');
     }
 }
