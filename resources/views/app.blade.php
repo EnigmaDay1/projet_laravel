@@ -74,10 +74,13 @@
         </div>
     @endif
         @if ($errors->any())
-            <div class='alert alert-warning'>
-                @foreach ( $errors->all() as $error )
-                    <p>{{ $error }}</p>
-                @endforeach
+            <div class='alert alert-danger'>
+                <strong>Oups!</strong> Il y a eu quelques problèmes avec les données que vous avez entrées.<br><br>
+                <ul>
+                    @foreach ( $errors->all() as $error )
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
         @endif
         </div>

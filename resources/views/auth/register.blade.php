@@ -7,17 +7,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h2>Inscription</h2></div>
                     <div class="panel-body">
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <strong>Oups!</strong> Il y a eu quelques problèmes avec vos données entrées.<br><br>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
                         <form class="form-horizontal" role="form" method="POST" action="/auth/register">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

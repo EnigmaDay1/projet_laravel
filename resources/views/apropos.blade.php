@@ -13,7 +13,9 @@
                         <br>
                         Année académique : 2015-2016<br>
                         <br>
-                        Lien vers le dépôt Git du projet : <a href="https://github.com/EnigmaDay1/projet_laravel">https://github.com/EnigmaDay1/projet_laravel</a>
+                        Lien vers le dépôt Git du projet : <a href="https://github.com/EnigmaDay1/projet_laravel">https://github.com/EnigmaDay1/projet_laravel</a><br>
+                        <br>
+                        Lien vers l'hébergement Heroku : <a href="http://enigmaday1.herokuapp.com/">http://enigmaday1.herokuapp.com/</a>
                     </div>
                 </div>
             </div>
